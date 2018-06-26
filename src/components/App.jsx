@@ -9,7 +9,8 @@ class App extends React.Component {
     this.state = {
       value: '',
       tasks: [],
-      id: 0
+      id: 0,
+      display: 'all'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,26 +26,52 @@ class App extends React.Component {
     const newCollection = update(this.state.tasks, { [index]: { $set: newItem } })
     this.setState({
       tasks: newCollection
-    })
-    console.log(item);
-    console.log(newItem);
+    });
   }
   handleAdd = (e) => {
     e.preventDefault();
-    this.setState({
-      tasks: [...this.state.tasks,
-      {
-        id: this.state.id,
-        task: this.state.value,
-        isCompleted: false
-      }
-      ],
-      value: '',
-      id: this.state.id + 1
-    });
+    if (this.state.value) {
+      this.setState({
+        tasks: [...this.state.tasks,
+        {
+          id: this.state.id,
+          task: this.state.value,
+          isCompleted: false
+        }
+        ],
+        value: '',
+        id: this.state.id + 1
+      });
+    }
   }
-
+  selActive = () => {
+    this.setState({ display: 'active' });
+    console.log(this.state.display);
+  }
+  selCompleted = () => {
+    this.setState({ display: 'completed' });
+    console.log(this.state.display);
+  }
+  selAll = () => {
+    this.setState({ display: 'all' });
+    console.log(this.state.display);
+  }
+  deleteCompleted = () => {
+    this.setState({
+      tasks:this.state.tasks.filter(item => !item.isCompleted)
+    })
+  }
   render() {
+    let items;
+    switch (this.state.display) {
+      case 'all': items = this.state.tasks;
+        break;
+      case 'active': items = this.state.tasks.filter(item => !item.isCompleted);
+        break;
+      case 'completed': items = this.state.tasks.filter(item => item.isCompleted);
+        break;
+    }
+    const count = this.state.tasks.filter(item => !item.isCompleted).length;
     return (
       <div>
         <div className="container">
@@ -56,8 +83,9 @@ class App extends React.Component {
           </form>
         </div>
         <ul>
-          {this.state.tasks.map(item => <Item key={item.id} complete={this.handleRemove} item={item} />)}
+          {items.map(item => <Item key={item.id} complete={this.handleRemove} item={item} />)}
         </ul>
+        <Footer delete = {this.deleteCompleted} count={count} all={this.selAll} completed={this.selCompleted} active={this.selActive} />
       </div>
 
     )

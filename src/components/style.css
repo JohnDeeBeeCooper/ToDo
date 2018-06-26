@@ -5,3 +5,10 @@ li {
 .completed {
     text-decoration: line-through;
 }
+
+ul.footer-list li {
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+
+}
