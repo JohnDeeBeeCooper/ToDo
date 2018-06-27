@@ -13,9 +13,11 @@ export default class extends React.Component {
     return (
       <li>
         <div>
-          <input type="checkbox" onChange={todo.complete(todo.item)} /><label className={classItem}>{todo.item.task}</label>
+          <input type="checkbox" className="toggle" checked={todo.item.isCompleted} onChange={todo.complete(todo.item)} /><label className={classItem}>{todo.item.task}</label>
         </div>
+        <hr />
       </li>
+
     );
   }
 }

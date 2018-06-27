@@ -4,18 +4,14 @@ import Footer from './Footer';
 import update from 'immutability-helper';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: '',
-      tasks: [],
-      id: 0,
-      display: 'all'
-    };
+  state = {
+    value: '',
+    tasks: [],
+    id: 0,
+    display: 'all'
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-  }
+
   handleChange = (e) => {
     this.setState({ value: e.target.value })
   }
@@ -46,19 +42,16 @@ class App extends React.Component {
   }
   selActive = () => {
     this.setState({ display: 'active' });
-    console.log(this.state.display);
   }
   selCompleted = () => {
     this.setState({ display: 'completed' });
-    console.log(this.state.display);
   }
   selAll = () => {
     this.setState({ display: 'all' });
-    console.log(this.state.display);
   }
   deleteCompleted = () => {
     this.setState({
-      tasks:this.state.tasks.filter(item => !item.isCompleted)
+      tasks: this.state.tasks.filter(item => !item.isCompleted)
     })
   }
   render() {
@@ -70,22 +63,22 @@ class App extends React.Component {
         break;
       case 'completed': items = this.state.tasks.filter(item => item.isCompleted);
         break;
+      default:
     }
     const count = this.state.tasks.filter(item => !item.isCompleted).length;
     return (
-      <div>
-        <div className="container">
+      <div className="container">
+        <div className="form-container">
           <form onSubmit={this.handleAdd} className="todo-form">
             <div className="form-group">
               <input value={this.state.value} onChange={this.handleChange} type="text" required="" className="form-control" placeholder="What needs to be done" />
             </div>
-            <button onClick={this.handleAdd} type="submit" className="btn btn-primary">add</button>
           </form>
         </div>
-        <ul>
+        <ul className="item-list">
           {items.map(item => <Item key={item.id} complete={this.handleRemove} item={item} />)}
         </ul>
-        <Footer delete = {this.deleteCompleted} count={count} all={this.selAll} completed={this.selCompleted} active={this.selActive} />
+        <Footer delete={this.deleteCompleted} count={count} all={this.selAll} completed={this.selCompleted} active={this.selActive} />
       </div>
 
     )
