@@ -22,7 +22,8 @@ class App extends React.Component {
     const newCollection = update(this.state.tasks, { [index]: { $set: newItem } })
     this.setState({
       tasks: newCollection
-    });
+    }); 
+    
   }
   handleAdd = (e) => {
     e.preventDefault();
