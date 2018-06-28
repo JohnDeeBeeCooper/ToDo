@@ -26,7 +26,7 @@ class App extends React.Component {
   }
   handleAdd = (e) => {
     e.preventDefault();
-    if (this.state.value) {
+    if (this.state.value.trim()) {
       this.setState({
         tasks: [...this.state.tasks,
         {

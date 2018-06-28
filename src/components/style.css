@@ -3,8 +3,6 @@ body {
     line-height: 1.4em;
     background: #f5f5f5;
     color: #4d4d4d;
-    min-width: 230px;
-    max-width: 550px;
     margin: 0 auto;
     font-weight: 300;
 }
@@ -43,7 +41,7 @@ ul.footer-list li {
 
 .container {
     background: #fff;
-    min-width: 400px;
+    min-width: 450px;
     max-width: 600px;
     margin: 130px 0 40px 0;
     position: relative;
@@ -51,13 +49,24 @@ ul.footer-list li {
 }
 
 .todo-footer {
-    display: inline-block;
+    text-align: center;
+    height: 40px;
+    align-items: center;
 }
 
 .todo-footer ul {
     display: block;
+    margin: 0;
+    padding: 0;
 }
 
+.item-list li {
+    border-bottom: 1px solid gray;
+}
+
+.containter{
+    border:1px solid gray;
+}
 .btn {
     font-family: Arial;
     color: #000000;
@@ -71,8 +80,8 @@ ul.footer-list li {
 
 .btn:hover {
     text-decoration: none;
-    border: 1px solid #000000;
-    border-radius: 28px;
+    border: 1px solid gray;
+    border-radius: 3px;
 }
 
 .item-list {
@@ -85,9 +94,36 @@ ul.footer-list li {
     font-size: 16px;
 }
 
-
 .form-control {
     font-family: Arial;
     color: #000000;
     font-size: 16px;
+}
+
+.footer-list li button {
+    color: inherit;
+    margin: 3px;
+    padding: 3px 7px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.todo-count {
+    float: left;
+    text-align: left;
+    padding:0 5px;
+}
+.item-list{
+    border:1px solid gray;
+}
+.item-list li {
+    text-align: left;
+    padding:10px 15px;
+}
+.item-list item {
+    padding:10px 0 0 0;
+}
+.todo-footer{
+    display:flex;
 }
