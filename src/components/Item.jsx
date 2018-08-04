@@ -13,6 +13,7 @@ const Item = (props) => {
       <div>
         <input type="checkbox" id={props.item.id} checked={props.item.isCompleted} onChange={props.complete(props.item)} />
         <label htmlFor={props.item.id} className={classItem}>{props.item.task}</label>
+        <label onClick = {props.delete(props.item.id)} className="separate-delete"></label>
       </div>
     </li>
 

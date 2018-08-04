@@ -55,6 +55,10 @@ class App extends React.Component {
             tasks: this.state.tasks.filter(item => !item.isCompleted)
         })
     }
+    separateDelete = (id) => (e) => {
+        e.preventDefault();
+        this.setState({tasks: this.state.tasks.filter(item => item.id !== id)});
+    }
     renderList() {
         let items;
         switch (this.state.display) {
@@ -68,7 +72,7 @@ class App extends React.Component {
         }
         return this.state.tasks.length > 0 ?
             (<ul className="item-list">
-                {items.map(item => <Item key={item.id} complete={this.handleRemove} item={item} />)}
+                {items.map(item => <Item key={item.id} delete = {this.separateDelete} complete={this.handleRemove} item={item} />)}
             </ul>)
             : null;
     }

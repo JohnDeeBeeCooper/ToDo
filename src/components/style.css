@@ -52,8 +52,9 @@ ul.footer-list li {
     padding: 0;
 }
 input[type="text"]{
-    border:1px solid #7abed1;
-    outline:none;
+    border: 0px solid #7abed1;
+    border-bottom: 1px solid #7abed1;
+    outline: none;
 }
 .item-list li {
     border-bottom: 1px solid #7abed1;
@@ -67,8 +68,13 @@ input[type="text"]{
     text-decoration: none;
     outline: none;
 }
+.clear-completed {
+    color:#f7f3e9 !important;
+    background: #f05945;
+}
 
 .btn:hover {
+    cursor:pointer;
     text-decoration: none;
     border: 1px solid #f05945;
     border-radius: 3px;
@@ -123,7 +129,6 @@ input[type="checkbox"] + label {
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 20px;
   font: 14px/20px 'Open Sans', Arial, sans-serif;
   color: #433F3E;
   cursor: pointer;
@@ -159,3 +164,28 @@ input[type="checkbox"]:checked + label:before {
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.separate-delete {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 15px;
+    opacity: 0.3;
+    }
+    .separate-delete:hover {
+    cursor : pointer;
+    opacity: 1;
+    }
+    .separate-delete:before, .separate-delete:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 15px;
+    width: 2px;
+    background-color: #f05945;
+    }
+    .separate-delete:before {
+    transform: rotate(45deg);
+    }
+    .separate-delete:after {
+    transform: rotate(-45deg);
+    }
