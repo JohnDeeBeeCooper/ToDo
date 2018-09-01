@@ -63,6 +63,7 @@ ul.footer-list li {
     padding: 0;
 }
 input[type="text"]{
+    padding: 10px;
     border: 0px solid #7abed1;
     border-bottom: 1px solid #7abed1;
     outline: none;
@@ -228,8 +229,8 @@ input[type="checkbox"]:checked + label:before {
     .todo-count{
         font-size: 11px;
     }
-    .footer-list li button {
-        margin: 0;
+    .footer-list li button:last-child{
+        margin: 1px;
     }
     .container{
         margin: 80px 0 40px 0;
