@@ -5,8 +5,8 @@ body {
     line-height: 1.4em;
     background:#f7f3e9;
     color: #433F3E;
-    margin: 0 auto;
     font-weight: 300;
+    margin: 0 auto;
 }
 
 div {
@@ -24,7 +24,15 @@ li {
 .completed {
     text-decoration: line-through;
 }
-
+.react{
+    color: #f05945;
+}
+.logo{
+    opacity: 0.5;
+}
+.app{
+    color: #7abed1
+}
 ul.footer-list li {
     display: inline;
     margin-right: 5px;
@@ -33,7 +41,7 @@ ul.footer-list li {
 
 .container {
     background: #f7f3e9;
-    min-width: 450px;
+    min-width: 320px;
     max-width: 600px;
     margin: 130px 0 40px 0;
     position: relative;
@@ -58,6 +66,22 @@ input[type="text"]{
 }
 .item-list li {
     border-bottom: 1px solid #7abed1;
+}
+.element {
+    position: relative;
+} 
+.element:before {
+    content: "\f040";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    position: absolute;
+    top: 10px;
+    left: 0;
 }
 .btn {
     font-family: Arial;
@@ -111,6 +135,7 @@ button.active {
     float: left;
     text-align: left;
     padding:0 5px;
+    font-size: 14px;
 }
 .item-list li {
     text-align: left;
@@ -189,3 +214,18 @@ input[type="checkbox"]:checked + label:before {
     .separate-delete:after {
     transform: rotate(-45deg);
     }
+@media (max-width: 450px) {
+    ul.footer-list li{
+        margin-right: 0;
+        padding: 0;    
+    }
+    .btn{
+        font-size: 11px;
+    }
+    .todo-count{
+        font-size: 11px;
+    }
+    .footer-list li button {
+        margin: 0;
+    }
+}

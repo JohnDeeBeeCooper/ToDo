@@ -57,7 +57,7 @@ class App extends React.Component {
     }
     separateDelete = (id) => (e) => {
         e.preventDefault();
-        this.setState({tasks: this.state.tasks.filter(item => item.id !== id)});
+        this.setState({ tasks: this.state.tasks.filter(item => item.id !== id) });
     }
     renderList() {
         let items;
@@ -72,26 +72,27 @@ class App extends React.Component {
         }
         return this.state.tasks.length > 0 ?
             (<ul className="item-list">
-                {items.map(item => <Item key={item.id} delete = {this.separateDelete} complete={this.handleRemove} item={item} />)}
+                {items.map(item => <Item key={item.id} delete={this.separateDelete} complete={this.handleRemove} item={item} />)}
             </ul>)
             : null;
     }
     render() {
-
         const count = this.state.tasks.filter(item => !item.isCompleted).length;
         return (
-            <div className="container">
-                <div className="form-container">
-                    <form onSubmit={this.handleAdd} className="todo-form">
-                        <div className="form-group">
-                            <input value={this.state.value} onChange={this.handleChange} type="text" required="" className="form-control" placeholder="What needs to be done" />
-                        </div>
-                    </form>
+            <div className="wrapper">
+             <h1 className="logo react">React ToDo</h1><h1 className="logo app">App</h1>
+                <div className="container">
+                    <div className="form-container">
+                        <form onSubmit={this.handleAdd} className="todo-form">
+                            <div className="form-group">
+                                <input value={this.state.value} onChange={this.handleChange} type="text" required="" className="form-control" placeholder="What needs to be done" />
+                            </div>
+                        </form>
+                    </div>
+                    {this.renderList()}
+                    <Footer delete={this.deleteCompleted} display={this.state.display} count={count} all={this.selAll} completed={this.selCompleted} active={this.selActive} />
                 </div>
-                {this.renderList()}
-                <Footer delete={this.deleteCompleted} display={this.state.display} count={count} all={this.selAll} completed={this.selCompleted} active={this.selActive} />
             </div>
-
         )
     }
 }
